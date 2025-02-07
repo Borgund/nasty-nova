@@ -1,0 +1,90 @@
+---
+title: Intro Angular
+---
+
+Same Prerequisits as mentioned in the introduction.
+
+## Install ScaleUI token package:
+
+Install the `@scaleaq/scaleui-core` and `@scaleaq/scaleui-tokens` package.
+
+```bash
+pnpm install @scaleaq/scaleui-tokens
+```
+
+## Using ScaleUI tokens
+
+-   The token package exposes styles, themes and fonts made by the UX team.
+    To import the tokens in your project, you can do the following:
+
+### Using tokens in Angular
+
+After installing then you can add the ScaleUI styles from the `@scaleaq/scaleui-tokens` library.
+
+This can be done by adding the global styles to the `angular.json` file e.g.: `"@scaleaq/scaleui-tokens/tokens.css"`. The structure looks something like this: `projects -> <app name> -> architect -> build -> options -> styles`. (see example in the [scaleui-mono](https://github.com/scaleaq/scaleui-mono/blob/main/apps/angular-demo/angular.json) repository).
+
+## Installation
+
+To install ScaleUI, use the following command in your terminal:
+
+### Angular:
+
+The `@scaleaq/scaleui-wc-angular` package will be the main angular package in the future, but there has been some issues with different Angular versions lately, for now we recommend using the `@scaleaq/scaleui-core` package with Web Components Directly until this is resolved.
+
+```bash
+pnpm install @scaleaq/scaleui-core
+```
+
+Once installed you can define the Web Components to the custom elements registry by adding these lines to your `main.ts` file:
+
+```ts
+//main.ts
+import { defineCustomElements } from "@scaleaq/scaleui-core/loader";
+
+defineCustomElements();
+```
+
+## Using components
+
+Now you should be able to us the components in the library by including them in the template directly.
+
+```html
+<sui-button variant="action" variant="solid">Hello</sui-button>
+```
+
+If you get the error message:
+
+> [ERROR] NG8001: 'sui-button' is not a known element:
+> demo-angular17:start:
+
+> 1. If 'sui-button' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+>    demo-angular17
+> 2. If 'sui-button' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+
+This can be fixed by including the CUSTOM_ELEMENTS_SCHEMA from `@angular/core` either in the component.ts file where the component is used in the template, or in a top level component/module.
+
+```ts
+//*.component.ts*/
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+
+...
+
+@Component({
+...
+schemas: [CUSTOM_ELEMENTS_SCHEMA]
+...
+})
+```
+
+> Keep in mind that using `CUSTOM_ELEMENTS_SCHEMA` opts out of a lot of useful Angular template checking features. [Read more here](https://manuel-rauber.com/2021/02/23/youre-using-custom_elements_schema-wrong/). When the `@scaleaq/scaleui-wc-angular` library is in place this wrapper layer will be done automatically from our side.
+
+All properties can be viewed in the storybook documentation for each component.
+
+You can read more about how to use a specific component under the 'components' chapter.
+
+## Shorthand
+
+```
+# A shorthand to install both packages at the same time:
+pnpm install @scaleaq/scaleui-{core,tokens}
+```

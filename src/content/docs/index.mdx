@@ -1,0 +1,40 @@
+---
+title: Welcome to ScaleUI
+template: splash
+hero:
+  tagline: ScaleAQs design system and framework agnostic component library.
+  image:
+    alt: ScaleUI logo
+    light: ../../assets/themelight.svg
+    dark: ../../assets/themedark.svg
+  actions:
+    - text: Getting started
+      link: /guides/1-introduction/1-intro/
+      icon: right-arrow
+    - text: Go to storybook
+      link: https://scaleaq.github.io/scaleui-mono/
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Where to go
+
+<CardGrid stagger>
+  <Card title="Designers" icon="pencil">
+    See the [Designers Guide](/guides/designers/) for how to use the ScaleUI
+    design system.
+  </Card>
+  <Card title="Developers" icon="add-document">
+    See the [Developers Guide](/guides/developers/) for how to build your site
+    with ScaleUI.
+  </Card>
+  <Card title="Changelog" icon="rocket">
+    See the [Changelog](/changelog/) for the latest updates to the library.
+  </Card>
+  <Card title="Storybook" icon="open-book">
+    Too look closer at the components in the library, check out the
+    [Storybook](https://scaleaq.github.io/scaleui-mono/).
+  </Card>
+</CardGrid>

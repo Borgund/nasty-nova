@@ -1,0 +1,131 @@
+---
+title: Intro
+description: Introduction to ScaleUI
+---
+
+## What is ScaleUI?
+
+ScaleUI is a design system and a component library that is used internally in Scale Aquaculture.
+The design system is built with StencilJS and is therefore framework agnostic (hence hereafter React and Angular).
+
+## How to use these docs
+
+The Introduction chapter is the starting point for learning about ScaleUI. It provides an overview of the design system, and why it is setup the way it is.
+
+The User Guides chapter provides detailed information on how to use ScaleUI components, including installation, framework specific setup, token usage, customization, and more.
+
+The Internal Practices chapter provides information on how to contribute to the ScaleUI project, including how to set up a development environment, how to write documentation, how to contribute code, and how to write tests.
+
+## Prerequisit
+
+To be able to install the packages that are in the private package registry for ScaleAQ on Github you need to do the following:
+
+1. Create a new file called `.npmrc` in your project root.
+2. Add the following content to the file:
+
+```bash
+//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+
+registry=https://registry.npmjs.org/
+@scaleaq:registry=https://npm.pkg.github.com
+
+```
+
+3. Install ScaleUI token package:
+
+```bash
+pnpm install @scaleaq/scaleui-tokens
+```
+
+4. Using ScaleUI tokens
+
+-   The token package exposes styles, themes and fonts made by the UX team.
+    To import the tokens in your project, you can do the following:
+
+### Using tokens in React
+
+```tsx
+import "@scaleaq/scaleui-tokens/tokens"; // This will import all the tokens
+```
+
+OR choose one of the following (in case you must have a specific token, instead of the whole package):
+
+```tsx
+import "@scaleaq/scaleui-tokens/fonts.css"; // This will import the fonts
+import "@scaleaq/scaleui-tokens/dark_theme.css"; // This will import the dark theme
+import "@scaleaq/scaleui-tokens/light_theme.css"; // This will import the light theme
+```
+
+### Using tokens in Angular
+
+After installing the add the ScaleUI styles from the `@scaleaq/scaleui-tokens` library.
+After installing then you can add the ScaleUI styles from the `@scaleaq/scaleui-tokens` library.
+
+This can be done by adding the global styles to the `angular.json` file e.g.: `"@scaleaq/scaleui-tokens/tokens.css"`. The structure looks something like this: `projects -> <app name> -> architect -> build -> options -> styles`. (see example in the [scaleui-mono](https://github.com/scaleaq/scaleui-mono/blob/main/apps/angular-demo/angular.json) repository).
+
+## Installation
+
+To install ScaleUI, use the following command in your terminal:
+
+### React:
+
+```bash
+pnpm install @scaleaq/scaleui-wc-react
+```
+
+### Angular:
+
+```bash
+pnpm install @scaleaq/scaleui-wc-angular
+```
+
+## Using components
+
+To use the components in your project, you need to import the components you want to use.
+
+For example, to add a button component to your project, you can do the following:
+
+### React example
+
+```tsx
+<SuiBadge variant="action" label="Action" onClick={onClick} />
+```
+
+### Angular example
+
+```ts
+//*.component.ts*/
+import { SuiButton } from '@scaleaq/scaleui-wc-angular';
+
+...
+
+@Component({
+...
+imports: [SuiButton]
+...
+})
+```
+
+```html
+<sui-button variant="action" variant="solid">Hello</sui-button>
+```
+
+All properties can be viewed in the storybook documentation for each component.
+
+You can read more about how to use a specific component under the 'components' chapter.
+
+If you are having issues using the `@scaleaq/scaleui-wc-angular` package in your project please try the alternative approach using web components directly temporarily. We are wokring on solving some issues with the Angular wrapper library. For more information please read ['']().
+
+## Shorthand React
+
+```
+# A shorthand to install both packages at the same time:
+pnpm install @scaleaq/scaleui-{wc-react,tokens}
+```
+
+## Shorthand Angular
+
+```
+# A shorthand to install both packages at the same time:
+pnpm install @scaleaq/scaleui-{wc-angular,tokens}
+```
