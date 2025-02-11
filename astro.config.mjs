@@ -10,8 +10,8 @@ export default defineConfig({
     starlight({
       title: "ScaleUI 🐟",
       logo: {
-        light: "./src/assets/themelight.svg",
-        dark: "./src/assets/themedark.svg",
+        light: "./src/assets/themelightlogo.svg",
+        dark: "./src/assets/themedarklogo.svg",
         replacesTitle: true,
       },
       social: {
