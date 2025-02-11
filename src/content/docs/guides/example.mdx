@@ -2,7 +2,8 @@
 title: Example Guide
 description: A guide in my new Starlight docs site.
 ---
-import {Code } from '@astrojs/starlight/components'
+
+import { Code, Tabs, TabItem, Steps } from "@astrojs/starlight/components";
 
 Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
 Writing a good guide requires thinking about what your users are trying to do.
@@ -11,6 +12,48 @@ Writing a good guide requires thinking about what your users are trying to do.
 
 - Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
 
+<Steps>
+<ol>
+<li>
+Something
+<Tabs syncKey="installation">
+  <TabItem label="Yarn" icon="seti:yarn">
+    <Code title="terminal" code={`yarn i`} />
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+    <Code title="terminal" code={`pnpm i`} />
+  </TabItem>
+</Tabs>
+</li>
 
+<li>
+  Something else
+  <Tabs syncKey="frontend">
+    <TabItem label="React" icon="seti:react">
+      <Code title="main.ts" code={`<react></react>`} />
+    </TabItem>
+    <TabItem label="HTML" icon="seti:html">
+      <Code title="main.ts" code={`<html></html>`} />
+    </TabItem>
+    <TabItem label="Angular" icon="seti:javascript">
+      <Code title="main.ts" code={`<angular> </angular>`} />
+    </TabItem>
+  </Tabs>
+</li>
 
-<Code code='console.log("hello world")' lang="ts" title=""  mark={["log"]} />
+<li>
+Another thing
+
+<Tabs syncKey="installation">
+  <TabItem label="Yarn" icon="seti:yarn">
+    <Code title="terminal" code={`yarn i`} />
+  </TabItem>
+  <TabItem label="pnpm" icon="pnpm">
+    <Code title="terminal" code={`pnpm i`} />
+  </TabItem>
+</Tabs>
+</li>
+
+</ol>
+
+</Steps>
